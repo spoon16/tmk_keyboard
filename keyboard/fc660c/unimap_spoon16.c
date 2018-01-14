@@ -13,19 +13,32 @@ enum function_id {
     RSHIFT_RPAREN,
 };
 
+/* examples */
+// howto: define a momentary layer toggle (while key is held down)
 #define AC_L1 ACTION_LAYER_MOMENTARY(1)
-#define AC_L2 ACTION_LAYER_TOGGLE(2)
-#define AC_LSFTP ACTION_MODS_TAP_KEY(MOD_LSFT, MOD_LSFT | KC_9)
-#define AC_RSFTP ACTION_MODS_TAP_KEY(MOD_RSFT, MOD_LSFT | KC_0)
+// howto: trigger a macro
 #define AC_HELLO ACTION_MACRO(HELLO)
+
+// toggle layer 2
+#define AC_L2 ACTION_LAYER_TOGGLE(2)
+// LSHIFT when held, LPAREN when tapped
 #define AC_LSLP ACTION_FUNCTION_TAP(LSHIFT_LPAREN)
+// RSHIFT when held, RPAREN when tapped
 #define AC_RSRP ACTION_FUNCTION_TAP(RSHIFT_RPAREN)
+// L1 when held, SPC when tapped
 #define AC_SPCL1 ACTION_LAYER_TAP_KEY(1, KC_SPC)
+// hyper key when held enable LALT, LCTL, LSFT modifiers
+// useful when creating keyboard shortcuts in applications
 #define AC_HYPER ACTION_MODS(MOD_LALT | MOD_LCTL | MOD_LSFT)
+// hard web refresh
 #define AC_HWREF ACTION_KEY(MOD_LGUI | KC_R)
+// redefine web back
 #define AC_WBAK ACTION_KEY(MOD_LGUI | KC_LEFT)
+// redefine web forward
 #define AC_WFWD ACTION_KEY(MOD_LGUI | KC_RIGHT)
+// redefine web stop
 #define AC_WSTP ACTION_KEY(MOD_LGUI | KC_DOT)
+// web developer tools
 #define AC_WDEV ACTION_KEY(KC_F12)
 
 #ifdef KEYMAP_SECTION_ENABLE
@@ -33,13 +46,34 @@ const action_t actionmaps[][UNIMAP_ROWS][UNIMAP_COLS] __attribute__ ((section ("
 #else
 const action_t actionmaps[][UNIMAP_ROWS][UNIMAP_COLS] PROGMEM = {
 #endif
+/**
+ * Defaults for FC660C
+ *
+ * [0] = \
+ * KMAP(
+ *     ESC,    1,        2,      3,      4,      5,      6,      7,       8,       9,      0,      MINS,   EQL,   BSPC,   INS,
+ *     TAB,    Q,        W,      E,      R,      T,      Y,      U,       I,       O,      P,      LBRC,   RBRC,  BSLS,   DEL,
+ *     CAPS,   A,        S,      D,      F,      G,      H,      J,       K,       L,      SCLN,   QUOT,   ENT,
+ *     LSLP,   Z,        X,      C,      V,      B,      N,      M,       COMM,    DOT,    SLSH,   RSRP,   UP,
+ *     LCTL,   LGUI,     LALT,   SPC,    RALT,   RCTL,   L1,     LEFT,    DOWN,    RGHT
+ * ),
+ * [1] = \
+ * KMAP(
+ *     GRV,    F1,       F2,     F3,     F4,     F5,     F6,     F7,      F8,      F9,       F10,    F11,   F12,    TRNS,   TRNS,
+ *     TRNS,   TRNS,     TRNS,   TRNS,   TRNS,   TRNS,   TRNS,   TRNS,    PSCR,    SLCK,     PAUS,   TRNS,  TRNS,   TRNS,   TRNS,
+ *     TRNS,   TRNS,     TRNS,   TRNS,   TRNS,   TRNS,   TRNS,   TRNS,    HOME,    PGUP,     TRNS,   TRNS,  TRNS,
+ *     TRNS,   TRNS,     TRNS,   TRNS,   TRNS,   TRNS,   TRNS,   TRNS,    END,     PGDN,     TRNS,   TRNS,  TRNS,
+ *     TRNS,   TRNS,     TRNS,   TRNS,   TRNS,   MENU,   TRNS,   TRNS,    TRNS,    TRNS
+ * ),
+ *
+ */
     [0] = \
     KMAP(
         GRV,    1,        2,      3,      4,      5,      6,      7,       8,       9,      0,      MINS,   EQL,   BSPC,   INS,
         TAB,    Q,        W,      E,      R,      T,      Y,      U,       I,       O,      P,      LBRC,   RBRC,  BSLS,   DEL,
         LCTL,   A,        S,      D,      F,      G,      H,      J,       K,       L,      SCLN,   QUOT,   ENT,
         LSLP,   Z,        X,      C,      V,      B,      N,      M,       COMM,    DOT,    SLSH,   RSRP,   UP,
-        HYPER,  LALT,     LGUI,   SPCL1,  RALT,   LCTL,   L2,     LEFT,    DOWN,    RGHT
+        HYPER,  LALT,     LGUI,   SPCL1,  RALT,   RCTL,   L2,     LEFT,    DOWN,    RGHT
     ),
     [1] = \
     KMAP(
